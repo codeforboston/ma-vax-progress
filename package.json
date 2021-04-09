@@ -1,0 +1,25 @@
+{
+  "name": "ma-vax-progress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeforboston/ma-vax-progress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeforboston/ma-vax-progress/issues"
+  },
+  "homepage": "https://github.com/codeforboston/ma-vax-progress#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "interval": "^0.1.1",
+    "twit": "^2.2.11"
+  }
+}
