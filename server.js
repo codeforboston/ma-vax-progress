@@ -28,7 +28,9 @@ server.listen(port, hostname, () => {
 });
 
 server.close(function () {
+  console.log("server closed");
   if (job) {
+    console.log("job stopped");
     job.stop();
   }
 });
