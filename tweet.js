@@ -18,24 +18,24 @@ const T = new Twitter({
   strictSSL: true, //
 });
 function tweet() {
-  const updateStatus = (newStatus) =>
-    T.post(
-      "statuses/update",
-      { status: `${newStatus}` },
-      function (err, data, response) {
-        console.log(response.text, data);
-        if (err) {
-          console.log(err);
-        }
+  const updateStatus = (newStatus) => {
+    console.log("trying to update status with: ", newStatus);
+    T.post("statuses/update", { status: `${newStatus}` }, function (err, data) {
+      if (err) {
+        console.log("ugh we have an error...", err);
+        return;
       }
-    );
+      console.log("I'm tweeting! ", data.text, data.created_at);
+    });
+  };
   getRawData(url, state, updateStatus);
 }
 function getPopulation(state) {
   return parseInt(populations[state].pop) || 0;
 }
 
-function getRawData(url, state, tweet) {
+function getRawData(url, state, updateStatus) {
+  console.log("getting raw data...");
   request(url, function (error, response, body) {
     const peopleVaccinated = getPeopleVaccinatedByState(body, state);
     const percentageVaccinated = getPopulationPercentage(
@@ -43,7 +43,7 @@ function getRawData(url, state, tweet) {
       getPopulation(state)
     );
     const newStatus = getNewStatus(percentageVaccinated);
-    tweet(newStatus);
+    updateStatus(newStatus);
   });
 }
 function getNewStatus(percentageVaccinated) {
