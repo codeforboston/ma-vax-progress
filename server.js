@@ -6,7 +6,7 @@ const tweet = require("./tweet.js");
 const hostname = "127.0.0.1";
 const port = 4343;
 
-const time = "1 22 * * *"; // time for cron
+const time = "3 22 * * *"; // time for cron
 let job;
 
 const server = http.createServer((req, res) => {
